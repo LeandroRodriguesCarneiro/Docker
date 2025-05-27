@@ -1,6 +1,6 @@
 FROM node:12-alpine
-COPY 
-WORKDIR 
+WORKDIR /app
+COPY . .
 RUN
 ENV
 EXPOSE
