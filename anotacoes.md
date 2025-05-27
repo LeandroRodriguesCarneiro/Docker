@@ -6,11 +6,12 @@
   - . -> para utilizar o diretório local
 - docker images -> Lista as imagens do docker
 - docker run {nome-imagem} -> Para rodar a imagem
-- docker ps -a
+- docker ps
   - docker ps -> Para listar os containers ativos
   - -a -> Para listar todos os containers
 - docker pull {nome-imagem} -> Para instalar a imagem
 - docker run -it {nome-imagem} -> Para utilizar a imagem de forma interativa
+- docker exec -it -u {nome de usuario} {id-container} -> Para utilizar a imagem de forma interativa com o usuário 
 
 ## Como criar um docker para a aplicação
 Precisa criar um docker file para a imagem, que depois se tornará o container.
@@ -35,34 +36,69 @@ Para isso vai utilizar um container docker para utilizar os comandos linux Ubunt
 - docker run -it ubunto
 ## Comandos Linux:
 ### Comandos basicos:
- - whoami -> mostra o usuário
- - echo -> printar
-   - echo $0 -> mostra o diretorio atual
- - history -> histórico de comandos
- - apt list -> lista de programas instalados
- - apt update -> atulizar os programas
- - apt intall {nome} -> instalar programa
- - apt remove {nome} -> apagar programas
+ - whoami -> Mostra o usuário
+ - echo -> Printar
+   - echo $0 -> Mostra o diretorio atual
+ - history -> Histórico de comandos
+ - apt list -> Lista de programas instalados
+ - apt update -> Atulizar os programas
+ - apt intall {nome} -> Instalar programa
+ - apt remove {nome} -> Apagar programas
 
 ### Comandos de diretorio e arquivos:
-obs: sobre a estrutura de arquivos do linux  este site tem um bom material sobre https://www.geeksforgeeks.org/linux-directory-structure/
+OBS: sobre a estrutura de arquivos do linux  este site tem um bom material sobre https://www.geeksforgeeks.org/linux-directory-structure/
  - ls 
-   - ls -> listar diretorios
-   - -1 -> listar diretorios em formato de coluna;
-   - -l -> listar diretorios e informações de arquivos e diretorio
-   - /{diretorios}/{subdiretorios} -> listando conteúdos dos diretórios
- - pwd -> mostrar diretorio atual
- - cd /{diretorio} -> para navegar até o diretório
+   - ls -> Listar diretorios
+   - -1 -> Listar diretorios em formato de coluna;
+   - -l -> Listar diretorios e informações de arquivos e diretorio
+   - /{diretorios}/{subdiretorios} -> Listando conteúdos dos diretórios
+   - -l -> lista as informações de arquivos e diretorios
+ - pwd -> Mostrar diretorio atual
+ - cd /{diretorio} -> Para navegar até o diretório
  - mkdir /{diretorio} -> Criando dietórios
  - mv {diretorio} {novo-nome} -> Mover ou renomear
- - touch {nome-arquivo} -> criando arquivos
- - rm {nome-arquivo}
-   - rm {nome-arquivo} -> apagando arquivos
-   - rm {parte}* -> exclui todos os arquivos que começão com a parte
-   - -r {diretorio} -> remove diretorios
- - cat {nome-arquivo}
-   - cat {nome-arquivo} -> para visualizar o conteúdo
-   - cat {nome-arquivo} > {nome-arquivo} -> para concatenar conteudos de arquivos
- - echo {texto} > {nome-arquivo} -> para colocar o texto no arquivo
- - more {nome-arquivo} -> para visualizar com paginação
- 
+ - touch {nome-arquivo} -> Criando arquivos
+ - rm
+   - rm {nome-arquivo} -> Apagando arquivos
+   - rm {parte}* -> Exclui todos os arquivos que começão com a parte
+   - -r {diretorio} -> Remove diretorios
+ - cat
+   - cat {nome-arquivo} -> Para visualizar o conteúdo
+   - cat {nome-arquivo} > {nome-arquivo} -> Para concatenar conteudos de arquivos
+ - echo {texto} > {nome-arquivo} -> Para colocar o texto no arquivo
+ - more {nome-arquivo} -> Para visualizar com paginação
+ - grep {palavra} [{nome-arquivo}, ...] -> Busca por palavras nos arquivos de texto
+   - grep {palavra} -i -r . -> Busca a palavra em todos os arquivos da pasta
+ - find
+   - find -type f -> Para procurar por arquivos
+   - find -type d -> Para procurar por diretoios
+   - find -type d -name "{palavra}" -> Para procurar por nome os diretorios
+   - find -type f -name "{palavra}" -> Para procurar por nome os arquivos
+ - Uso de comandos separados por ";" para executar multiplos comandos
+ - Uso de comandos separados por "&&" para executar multiplos comandos interrompendo quando houver erros
+### Gerenciando processos
+ - ps -> lista os processos
+ - sleep 500 -> para criar um processo
+ - kill {process-id} -> matar processos
+### Gerenciando usuários
+ - useradd -m  {nome-usuario}-> adiciona usuário
+ - usermod
+   - usermod {nome-usuario} -> modifica usuário
+   - usermod -G {nome-grupo}{nome-usuario} -> adiciona o usuario a um grupo
+ - user dell {nome-usuario} -> apaga usuário
+### Gerenciando grupos de usuários
+ - groups {nome-usuario} -> visualiza os grupos de usuário
+ - groupadd {nome-usuario} -> cria os grupos de usuário
+ - groupmod {nome-usuario} -> edita os grupos de usuário
+ - groupdel {nome-usuario} -> deleta os grupos de usuário
+### Permições de arquivos e diretórios
+obs: As informações dos arquivos e diretórios:
+1 grupo | 2 grupo | 3 grupo
+    -rw- r--       r-- 
+- 1 grupo -> usuario
+   - R -> read
+   - W -> write
+   - X -> executar
+- 2 grupo -> grupos de usuários
+- 3 grupo -> todos os usuários
+- chmod u+x {nome-arquivo} -> Para adicionar permições para arquivos
