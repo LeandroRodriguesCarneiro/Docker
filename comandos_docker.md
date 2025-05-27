@@ -71,5 +71,3 @@ Salvar e carregar as imagens sem passar pelo docker hub
 - `CMD` → Comando executado ao iniciar o container
 - `ENTRYPOINT` → Executa comandos dentro do container
 ---
-
----
