@@ -1,91 +1,177 @@
-## Docker Hub
-Repositório de containers funciona similar a um github para armazenar os containers.
-Aplicação ja se encontra em um container
+## 🐳 Comandos para Docker
 
-## Imagem:
-Contem o sistema operacional, arquivos, dependencias e variáveis de ambiente
+- `docker version` → Ver a versão do Docker
+- `docker build -t hi-docker .` → Construir a imagem
+  - `-t {nome-imagem}` → Identifica a imagem
+  - `.` → Utiliza o diretório local
+- `docker images` → Lista as imagens Docker
+- `docker run {nome-imagem}` → Executa a imagem
+- `docker ps` → Lista os containers ativos
+  - `-a` → Lista todos os containers (ativos e inativos)
+- `docker pull {nome-imagem}` → Baixa a imagem do Docker Hub
+- `docker run -it {nome-imagem}` → Executa a imagem de forma interativa
+- `docker exec -it -u {nome-usuario} {id-container}` → Acessa o container interativamente com usuário específico
 
-## Containers:
-Ambiente isolado podendo ser iniciado, parado, reiniciados e excluidos. 
+---
 
-## Processo:
-A aplicação é convertida para imagem via dockerfile e a imagem é executada em um container
+## 🏗️ Como criar um Docker para a aplicação
 
-## Linux
-O docker é baseado em linux possui diversas distribuições as mais famosas são:
- - Ubunto;
- - Bebian
- - Centos
- - Fedora
- - Alpine
+É necessário criar um `Dockerfile` que será usado para gerar a imagem, que por sua vez será usada para criar o container.
 
-Para isso vai utilizar um container docker para utilizar os comandos linux Ubunto de forma interativa.
-- docker run -it ubunto
-## Comandos Linux:
-### Comandos basicos:
- - whoami -> Mostra o usuário
- - echo -> Printar
-   - echo $0 -> Mostra o diretorio atual
- - history -> Histórico de comandos
- - apt list -> Lista de programas instalados
- - apt update -> Atulizar os programas
- - apt intall {nome} -> Instalar programa
- - apt remove {nome} -> Apagar programas
+- `FROM` → Imagem base que será utilizada
+- `COPY` → Copia arquivos para dentro da imagem
+- `WORKDIR` → Define o diretório de trabalho na imagem
+- `CMD` → Comando executado ao iniciar o container
 
-### Comandos de diretorio e arquivos:
-OBS: sobre a estrutura de arquivos do linux  este site tem um bom material sobre https://www.geeksforgeeks.org/linux-directory-structure/
- - ls 
-   - ls -> Listar diretorios
-   - -1 -> Listar diretorios em formato de coluna;
-   - -l -> Listar diretorios e informações de arquivos e diretorio
-   - /{diretorios}/{subdiretorios} -> Listando conteúdos dos diretórios
-   - -l -> lista as informações de arquivos e diretorios
- - pwd -> Mostrar diretorio atual
- - cd /{diretorio} -> Para navegar até o diretório
- - mkdir /{diretorio} -> Criando dietórios
- - mv {diretorio} {novo-nome} -> Mover ou renomear
- - touch {nome-arquivo} -> Criando arquivos
- - rm
-   - rm {nome-arquivo} -> Apagando arquivos
-   - rm {parte}* -> Exclui todos os arquivos que começão com a parte
-   - -r {diretorio} -> Remove diretorios
- - cat
-   - cat {nome-arquivo} -> Para visualizar o conteúdo
-   - cat {nome-arquivo} > {nome-arquivo} -> Para concatenar conteudos de arquivos
- - echo {texto} > {nome-arquivo} -> Para colocar o texto no arquivo
- - more {nome-arquivo} -> Para visualizar com paginação
- - grep {palavra} [{nome-arquivo}, ...] -> Busca por palavras nos arquivos de texto
-   - grep {palavra} -i -r . -> Busca a palavra em todos os arquivos da pasta
- - find
-   - find -type f -> Para procurar por arquivos
-   - find -type d -> Para procurar por diretoios
-   - find -type d -name "{palavra}" -> Para procurar por nome os diretorios
-   - find -type f -name "{palavra}" -> Para procurar por nome os arquivos
- - Uso de comandos separados por ";" para executar multiplos comandos
- - Uso de comandos separados por "&&" para executar multiplos comandos interrompendo quando houver erros
-### Gerenciando processos
- - ps -> lista os processos
- - sleep 500 -> para criar um processo
- - kill {process-id} -> matar processos
-### Gerenciando usuários
- - useradd -m  {nome-usuario}-> adiciona usuário
- - usermod
-   - usermod {nome-usuario} -> modifica usuário
-   - usermod -G {nome-grupo}{nome-usuario} -> adiciona o usuario a um grupo
- - user dell {nome-usuario} -> apaga usuário
-### Gerenciando grupos de usuários
- - groups {nome-usuario} -> visualiza os grupos de usuário
- - groupadd {nome-usuario} -> cria os grupos de usuário
- - groupmod {nome-usuario} -> edita os grupos de usuário
- - groupdel {nome-usuario} -> deleta os grupos de usuário
-### Permições de arquivos e diretórios
-obs: As informações dos arquivos e diretórios:
-1 grupo | 2 grupo | 3 grupo
-    -rw- r--       r-- 
-- 1 grupo -> usuario
-   - R -> read
-   - W -> write
-   - X -> executar
-- 2 grupo -> grupos de usuários
-- 3 grupo -> todos os usuários
-- chmod u+x {nome-arquivo} -> Para adicionar permições para arquivos
+---
+
+## 📦 Docker Hub
+
+Repositório de containers, funciona como o GitHub para armazenar imagens de containers.
+
+> A aplicação já se encontra em um container.
+
+---
+
+## 🧱 Imagem
+
+Contém:
+- Sistema operacional
+- Arquivos
+- Dependências
+- Variáveis de ambiente
+
+---
+
+## 📦 Container
+
+Ambiente isolado que pode ser iniciado, parado, reiniciado e excluído.
+
+---
+
+## 🔁 Processo
+
+1. A aplicação é convertida em uma imagem via `Dockerfile`
+2. A imagem é executada em um container
+
+---
+
+## 🐧 Linux
+
+O Docker é baseado em Linux. Algumas das distribuições mais comuns são:
+- Ubuntu
+- Debian
+- CentOS
+- Fedora
+- Alpine
+
+Para utilizar comandos Linux com Ubuntu de forma interativa:
+```bash
+docker run -it ubuntu
+```
+## 🖥️ Comandos Linux
+
+### 📌 Comandos básicos
+
+- `whoami` → Mostra o usuário atual  
+- `echo` → Exibe mensagens no terminal  
+  - `echo $0` → Mostra o nome do shell atual  
+- `history` → Mostra o histórico de comandos  
+- `apt list` → Lista programas instalados  
+- `apt update` → Atualiza os repositórios  
+- `apt install {nome}` → Instala um programa  
+- `apt remove {nome}` → Remove um programa  
+
+---
+
+### 📁 Comandos de diretório e arquivos
+
+🔗 **Dica:** Estrutura de arquivos do Linux → [GeeksforGeeks](https://www.geeksforgeeks.org/linux-directory-structure/)
+
+- `ls`  
+  - `ls` → Lista diretórios  
+  - `-1` → Lista em coluna  
+  - `-l` → Lista com informações detalhadas  
+  - `/diretorio/subdiretorio` → Lista conteúdo específico  
+- `pwd` → Mostra o diretório atual  
+- `cd /{diretorio}` → Navega até um diretório  
+- `mkdir /{diretorio}` → Cria diretórios  
+- `mv {origem} {destino}` → Move ou renomeia arquivos/diretórios  
+- `touch {nome-arquivo}` → Cria arquivos vazios  
+
+- `rm`  
+  - `rm {arquivo}` → Remove arquivos  
+  - `rm parte*` → Remove arquivos que começam com "parte"  
+  - `rm -r {diretorio}` → Remove diretórios recursivamente  
+
+- `cat`  
+  - `cat {arquivo}` → Mostra conteúdo do arquivo  
+  - `cat {arquivo1} > {arquivo2}` → Concatena conteúdo  
+
+- `echo {texto} > {arquivo}` → Escreve texto em arquivo  
+- `more {arquivo}` → Visualiza com paginação  
+
+- `grep {palavra} {arquivos...}` → Busca palavra nos arquivos  
+  - `grep -i -r {palavra} .` → Busca recursivamente na pasta atual  
+
+- `find`  
+  - `find -type f` → Procura por arquivos  
+  - `find -type d` → Procura por diretórios  
+  - `find -type d -name "{nome}"` → Procura diretórios por nome  
+  - `find -type f -name "{nome}"` → Procura arquivos por nome  
+
+---
+
+### ✅ Execução de múltiplos comandos
+
+- `cmd1 ; cmd2` → Executa ambos  
+- `cmd1 && cmd2` → Executa o segundo somente se o primeiro tiver sucesso  
+
+---
+
+### ⚙️ Gerenciamento de processos
+
+- `ps` → Lista processos  
+- `sleep 500` → Cria um processo em espera  
+- `kill {PID}` → Encerra processo  
+
+---
+
+### 👤 Gerenciamento de usuários
+
+- `useradd -m {usuario}` → Cria novo usuário  
+- `usermod`  
+  - `usermod {usuario}` → Modifica usuário  
+  - `usermod -G {grupo} {usuario}` → Adiciona usuário a grupo  
+- `userdel {usuario}` → Exclui usuário  
+
+---
+
+### 👥 Gerenciamento de grupos
+
+- `groups {usuario}` → Mostra grupos do usuário  
+- `groupadd {grupo}` → Cria novo grupo  
+- `groupmod {grupo}` → Edita grupo  
+- `groupdel {grupo}` → Remove grupo  
+
+---
+
+### 🔐 Permissões de arquivos e diretórios
+
+As permissões são exibidas no formato: `-rw-r--r--`
+
+- **1º grupo** → Usuário proprietário  
+- **2º grupo** → Grupo de usuários  
+- **3º grupo** → Todos os outros  
+
+**Permissões:**
+
+- `r` → Leitura  
+- `w` → Escrita  
+- `x` → Execução  
+
+**Exemplo:**
+
+```bash
+chmod u+x {arquivo}
+```
