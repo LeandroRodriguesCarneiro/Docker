@@ -15,6 +15,7 @@
 - `docker run -it {nome-imagem}` → Executa a imagem de forma interativa
   - `sh` → Para abrir o shell
 - `docker exec -it -u {nome-usuario} {id-container}` → Acessa o container interativamente com usuário específico
+- `docker image tag app:latest app:v1.0.0.0` → Adiciona uma tag a imagem
 
 ---
 
