@@ -22,7 +22,9 @@
 - `FROM` → Imagem base que será utilizada
 - `WORKDIR` → Define o diretório de trabalho na imagem
 - `COPY` → Copia arquivos para dentro da imagem
-- `ADD` → Adiciona arquivos para dentro da imagem
+- `ADD` → Adiciona arquivos para dentro da imagem podendo ser da internet e consegue descompactar arquivos
+  - Exemplo `ADD https://microsoft.com/teste.json`
+  - Exemplo `ADD teste.zip .`
 - `RUN` → Executa a aplicação
 - `ENV` → Configuração do ambiente
 - `EXPOSE` → Expoem a porta
