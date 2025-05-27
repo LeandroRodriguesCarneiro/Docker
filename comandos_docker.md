@@ -19,8 +19,13 @@
 É necessário criar um `Dockerfile` que será usado para gerar a imagem, que por sua vez será usada para criar o container.
 
 - `FROM` → Imagem base que será utilizada
-- `COPY` → Copia arquivos para dentro da imagem
 - `WORKDIR` → Define o diretório de trabalho na imagem
+- `COPY` → Copia arquivos para dentro da imagem
+- `ADD` → Adiciona arquivos para dentro da imagem
+- `RUN` → Executa a aplicação
+- `ENV` → Configuração do ambiente
+- `EXPOSE` → Expoem a porta
+- `USER` → Usuário que que esta executando
 - `CMD` → Comando executado ao iniciar o container
-
+- `ENTRYPOINT` → Executa comandos dentro do container
 ---
