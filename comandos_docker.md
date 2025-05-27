@@ -8,14 +8,32 @@
 - `docker run {nome-imagem}` → Executa a imagem
   - `-d` → Para rodar em background
   - `-p` → Para selecionar a porta da maquina com a porta do container
-  - Exemplo: `docker run -dp 3000:3000 app`
+    - Exemplo: `docker run -dp 3000:3000 app`
+  - `-it` → Executa a imagem de forma interativa
+    - Exemplo: `docker run -it {nome-imagem}`
 - `docker ps` → Lista os containers ativos
   - `-a` → Lista todos os containers (ativos e inativos)
 - `docker pull {nome-imagem}` → Baixa a imagem do Docker Hub
-- `docker run -it {nome-imagem}` → Executa a imagem de forma interativa
   - `sh` → Para abrir o shell
 - `docker exec -it -u {nome-usuario} {id-container}` → Acessa o container interativamente com usuário específico
 - `docker image tag app:latest app:v1.0.0.0` → Adiciona uma tag a imagem
+- `docker image rm {image-name:tag}` → Apaga a imagem
+---
+
+## 🏗️ Subindo as imagens para o docker hub
+Criar o repositorio no docker hub primeiro deve renomear a imagem para ter o mesmo nome do repositorio
+- `docker image tag {image-id} {nome-repositorio:tag}` → Renomeando o repositório
+
+- `docker login` → para fazer login
+- `docker push {nome-repositorio:tag}` → enviando imagem para o docker hub
+
+---
+
+## 🏗️ Salvando e carregando as imagens
+Salvar e carregar as imagens sem passar pelo docker hub
+- `docker image save -o {nome-arquivo} {nome-imagem}` → Salvando a imagem como um arquivo
+
+- `docker image load -i {nome-arquivo} {nome-imagem}` → Carregando a imagem
 
 ---
 
