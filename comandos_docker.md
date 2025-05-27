@@ -6,6 +6,9 @@
   - `.` → Utiliza o diretório local
 - `docker images` → Lista as imagens Docker
 - `docker run {nome-imagem}` → Executa a imagem
+  - `-d` → Para rodar em background
+  - `-p` → Para selecionar a porta da maquina com a porta do container
+  - Exemplo: `docker run -dp 3000:3000 app`
 - `docker ps` → Lista os containers ativos
   - `-a` → Lista todos os containers (ativos e inativos)
 - `docker pull {nome-imagem}` → Baixa a imagem do Docker Hub
