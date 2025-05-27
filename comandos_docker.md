@@ -10,6 +10,7 @@
   - `-a` → Lista todos os containers (ativos e inativos)
 - `docker pull {nome-imagem}` → Baixa a imagem do Docker Hub
 - `docker run -it {nome-imagem}` → Executa a imagem de forma interativa
+  - `sh` → Para abrir o shell
 - `docker exec -it -u {nome-usuario} {id-container}` → Acessa o container interativamente com usuário específico
 
 ---
