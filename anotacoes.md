@@ -1,28 +1,15 @@
-## Comandos para docker
-- docker version -> Ver a versão do docker
-- docker build -t hi-docker .
-  - docker build -> Para construir a imagem
-  - -t {nome-imagem} -> Para poder identificar a imagem
-  - . -> para utilizar o diretório local
-- docker images -> Lista as imagens do docker
-- docker run {nome-imagem} -> Para rodar a imagem
-- docker ps
-  - docker ps -> Para listar os containers ativos
-  - -a -> Para listar todos os containers
-- docker pull {nome-imagem} -> Para instalar a imagem
-- docker run -it {nome-imagem} -> Para utilizar a imagem de forma interativa
-- docker exec -it -u {nome de usuario} {id-container} -> Para utilizar a imagem de forma interativa com o usuário 
-
-## Como criar um docker para a aplicação
-Precisa criar um docker file para a imagem, que depois se tornará o container.
-- FROM -> A imgem que estará utilizando no sistema da imagem;
-- COPY -> Copiar os aquivos para dentro da imagem;
-- WORKDIR -> Seleciona a pasta a qual estará sendo utilizada dentro da imagem.
-- CMD -> Comandos a serem executados dentro da imagem
-
 ## Docker Hub
 Repositório de containers funciona similar a um github para armazenar os containers.
 Aplicação ja se encontra em um container
+
+## Imagem:
+Contem o sistema operacional, arquivos, dependencias e variáveis de ambiente
+
+## Containers:
+Ambiente isolado podendo ser iniciado, parado, reiniciados e excluidos. 
+
+## Processo:
+A aplicação é convertida para imagem via dockerfile e a imagem é executada em um container
 
 ## Linux
 O docker é baseado em linux possui diversas distribuições as mais famosas são:
