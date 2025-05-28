@@ -3,20 +3,40 @@
 - `docker-compose version` → Ver a versão do Docker Compose
 - `docker-compose up` → Construir o docker
 ---
-## 🏗️ Como criar um Docker para a aplicação
+## 🏗️ docker-compose.yml
 
-É necessário criar um `Dockerfile` que será usado para gerar a imagem, que por sua vez será usada para criar o container.
+É uma linguagem de serialization servindo para escrever configurações funciona por identação para separação de blocos de código
 
-- `FROM` → Imagem base que será utilizada
-- `WORKDIR` → Define o diretório de trabalho na imagem
-- `COPY` → Copia arquivos para dentro da imagem
-- `ADD` → Adiciona arquivos para dentro da imagem podendo ser da internet e consegue descompactar arquivos
-  - Exemplo `ADD https://microsoft.com/teste.json`
-  - Exemplo `ADD teste.zip .`
-- `RUN` → Executa a aplicação
-- `ENV` → Configuração do ambiente
-- `EXPOSE` → Expoem a porta
-- `USER` → Usuário que que esta executando
-- `CMD` → Comando executado ao iniciar o container
-- `ENTRYPOINT` → Executa comandos dentro do container
 ---
+
+## 🏗️ docker-compose.yml
+- `version: "3.8"` → Definir a versão do docker compose
+
+
+  - `services:` →  Difinição dos serviços
+    - `frontend:` →  Serviço frontend
+      - `dependes_on` → definir as dependencias
+        - `- backend`
+      - `build: ./frontend` → construir de acordo com o dockerfile na pasta frontend
+      - `ports:` → configurando as portas do container
+        - `- 3000:3000`
+    
+    - `backend:` →  Serviço backend
+      - `dependes_on` → definir as dependencias
+        - `- db`
+        - `build: ./backend` → construir de acordo com o dockerfile na pasta backend
+        - `ports:` → configurando as portas do container
+          - `- 3001:3001`
+        - `enviroment:` → configurando as variaveis de ambiente
+          - `DB_URL:mongodb://db/vidly`
+        - `command: ./docker-entrypoint.sh` → configurando as variaveis de ambiente
+    
+    - `db:` →  Serviço banco de dados
+       - `image: mongo:4.0-xenial` → configurar a imagem por dentro do compose
+       - `ports` → configurando as portas do container
+          - `- 27017:27017`
+       - `volumes:` → configurando o volume do banco de dados
+          - `-vidly:/data/db`
+  
+  - `volumes:` →  Difinição do volumes
+    - `vidly:` →  Difinição do volume vidly
