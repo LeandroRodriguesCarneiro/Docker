@@ -2,6 +2,7 @@
 
 - `docker-compose version` → Ver a versão do Docker Compose
 - `docker-compose up` → Construir o docker
+  - `docker-compose up --build` → obrigatoriamente constri as imagens
 ---
 ## 🏗️ docker-compose.yml
 
