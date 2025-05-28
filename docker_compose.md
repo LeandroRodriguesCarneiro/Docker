@@ -5,6 +5,7 @@
   - `docker-compose up --build` → Obrigatoriamente constri as imagens
   - `docker-compose up -d` → Para rodar em segundo plano
 - `docker-compose ps` → Para listar os containers
+- `docker-compose logs` → Para ver os logs
 ---
 ## 🏗️ docker-compose.yml
 
