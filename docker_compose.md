@@ -1,7 +1,7 @@
 ## 🐳 Comandos para Docker Compose
 
 - `docker-compose version` → Ver a versão do Docker Compose
-- `docker-compose version` → Ver a versão do Docker Compose
+- `docker-compose up` → Construir o docker
 ---
 ## 🏗️ Como criar um Docker para a aplicação
 
