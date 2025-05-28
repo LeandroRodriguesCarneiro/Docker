@@ -1,11 +1,13 @@
 const sqlite3 = require('sqlite3').verbose();
 const fs = require('fs');
-const location = process.env.SQLITE_DB_LOCATION || '/etc/todos/todo.db';
+const path = require('path');
 
-let db, dbAll, dbRun;
+const location = process.env.SQLITE_DB_LOCATION || path.join(__dirname, '../../data/todo.db');
+
+let db;
 
 function init() {
-    const dirName = require('path').dirname(location);
+    const dirName = path.dirname(location);
     if (!fs.existsSync(dirName)) {
         fs.mkdirSync(dirName, { recursive: true });
     }
@@ -19,7 +21,7 @@ function init() {
 
             db.run(
                 'CREATE TABLE IF NOT EXISTS todo_items (id varchar(36), name varchar(255), completed boolean)',
-                (err, result) => {
+                err => {
                     if (err) return rej(err);
                     acc();
                 },
@@ -41,13 +43,10 @@ async function getItems() {
     return new Promise((acc, rej) => {
         db.all('SELECT * FROM todo_items', (err, rows) => {
             if (err) return rej(err);
-            acc(
-                rows.map(item =>
-                    Object.assign({}, item, {
-                        completed: item.completed === 1,
-                    }),
-                ),
-            );
+            acc(rows.map(item => ({
+                ...item,
+                completed: item.completed === 1,
+            })));
         });
     });
 }
@@ -56,13 +55,8 @@ async function getItem(id) {
     return new Promise((acc, rej) => {
         db.all('SELECT * FROM todo_items WHERE id=?', [id], (err, rows) => {
             if (err) return rej(err);
-            acc(
-                rows.map(item =>
-                    Object.assign({}, item, {
-                        completed: item.completed === 1,
-                    }),
-                )[0],
-            );
+            const item = rows[0];
+            acc(item ? { ...item, completed: item.completed === 1 } : undefined);
         });
     });
 }

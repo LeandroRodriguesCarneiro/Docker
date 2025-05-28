@@ -21,7 +21,7 @@
   - `sh` → Para abrir o shell
 - `docker exec -it -u {nome-usuario} {id-container}` → Acessa o container interativamente com usuário específico
 - `docker image tag app:latest app:v1.0.0.0` → Adiciona uma tag a imagem
-- `docker image rm {image-name:tag}` → Apaga a imagem
+- `docker image rmi {image-name:tag}` → Apaga a imagem
 - `docker logs`
   - `docker logs -f {container-id}` → Mostra os logs
   - `docker logs -t {container-id}` → Mostra logs com tempo

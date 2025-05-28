@@ -1,11 +1,13 @@
-FROM node:12-alpine
+FROM node:12-bullseye
 WORKDIR /app
-RUN addgroup dev && adduser-S -G leandro dev
-USER leandro
-COPY package.json .
-RUN apk add --no-cache python2 g++ make
-RUN yarn install --production
+RUN apt-get update && apt-get install -y python g++ make && \
+    groupadd dev && useradd -m -g dev leandro
+COPY package.json ./ 
+COPY yarn.lock ./
+RUN yarn install --production || npm install
 COPY . .
-CMD ["node", "/src/index.js"]
-
+RUN npm rebuild sqlite3
+RUN mkdir -p /app/data && chown -R leandro:dev /app/data
+USER leandro
 EXPOSE 3000
+CMD ["node", "src/index.js"]
