@@ -15,6 +15,8 @@
     - Exemplo: `docker run --name {nome-container} {nome-imagem}`
   - `-v` → Para vincular a um volume
     - Exemplo: `docker run -dp 3000:3000 --name {nome-container} -v {nome-volume}:{diretorio-projeto/dados} {nome-imagem}`
+  - `-v` → Para vincular a um volume de apenas leitura
+    - Exemplo: `docker run -dp 3000:3000 --name {nome-container} -v {nome-volume}:{diretorio-projeto/dados}:ro {nome-imagem}`
 - `docker ps` → Lista os containers ativos
   - `-a` → Lista todos os containers (ativos e inativos)
 - `docker pull {nome-imagem}` → Baixa a imagem do Docker Hub
@@ -35,6 +37,7 @@
 - `docker volume ls`→ Listando volumes
 - `docker volume inspect {nome-volume}`→ Verificar o que tem no volume
 - `docker volume rm {nome-volume}`→ Apagar volume
+- `docker volume prune` → Apagar volumes não utilizados
 - `docker cp {imagem}:{diretorio-container} {diretorio-local}`→ Copiar do container para o host local
 - `docker cp {diretorio-local} {imagem}:{diretorio-container}`→ Copiar do host local para o container
 - `docker system prune`→ Remove todos os containers imagens parados
@@ -43,6 +46,7 @@
 - `docker stats` → Mostra mais informações sobre os containers e gastos de recursos computacioinais
 - `docker push` → Envia imagens para o hub
 - `docker pull` → Baixa as images do hub
+
 ---
 
 ## 🏗️ Subindo as imagens para o docker hub
