@@ -15,6 +15,7 @@
     - Exemplo: `docker run --name {nome-container} {nome-imagem}`
   - `-v` → Para vincular a um volume
     - Exemplo: `docker run -dp 3000:3000 --name {nome-container} -v {nome-volume}:{diretorio-projeto/dados} {nome-imagem}`
+    - Exemplo: `docker run -dp 3000:3000 --name {nome-container} -v {diretorio-host}:{diretorio-projeto/dados} {nome-imagem}` → Para vincular a uma pasta podendo atualizar o codigo em tempo real
 - `docker ps` → Lista os containers ativos
   - `-a` → Lista todos os containers (ativos e inativos)
 - `docker pull {nome-imagem}` → Baixa a imagem do Docker Hub
