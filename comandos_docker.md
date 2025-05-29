@@ -32,6 +32,7 @@
   - `docker rm {nome-container}` → Removendo container
   - `docker rm -f {nome-container}` → Forçando a remoção do container
 - `docker volume create {nome-volume}`→ Criando o volume
+- `docker volume ls`→ Listando volumes
 - `docker volume inspect {nome-volume}`→ Verificar o que tem no volume
 - `docker cp {imagem}:{diretorio-container} {diretorio-local}`→ Copiar do container para o host local
 - `docker cp {diretorio-local} {imagem}:{diretorio-container}`→ Copiar do host local para o container
