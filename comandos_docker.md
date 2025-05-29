@@ -16,6 +16,11 @@
   - `-v` → Para vincular a um volume
     - Exemplo: `docker run -dp 3000:3000 --name {nome-container} -v {nome-volume}:{diretorio-projeto/dados} {nome-imagem}`
     - Exemplo: `docker run -dp 3000:3000 --name {nome-container} -v {diretorio-host}:{diretorio-projeto/dados} {nome-imagem}` → Para vincular a uma pasta podendo atualizar o codigo em tempo real
+  - `-rm` → Para excluir o container assim que parar de rodar
+  - `--network {nome-network}` → Para conectar um container a uma network
+  - `-e {nome-variavel ambiente}={valor}` →  Para declarar uma variavel de ambiente
+    - Exemplo: `docker run -dp 3306:3306 --name mysqlapicontainer --rm --network flasknetwork -e MYSQL_ALLOW_EMPTY_PASSWORD=True mysqlnetwork`
+  
 - `docker ps` → Lista os containers ativos
   - `-a` → Lista todos os containers (ativos e inativos)
 - `docker pull {nome-imagem}` → Baixa a imagem do Docker Hub
@@ -50,7 +55,9 @@
 - `docker network ls` → Lista as redes disponíveis
 - `docker network rm {nome-network}` → Apaga a rede
 - `docker network prune` → Apaga todas as rede
-- 
+- `docker network connect {nome-network} {id-container}` → Conecta um container a uma network
+- `docker network disconnect {nome-network} {id-container}` → Conecta um container a uma network
+- `docker network inspect {nome-network}` → Inspecioina uma rede
 
 ---
 
