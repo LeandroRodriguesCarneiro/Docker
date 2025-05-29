@@ -34,6 +34,7 @@
 - `docker volume create {nome-volume}`→ Criando o volume
 - `docker volume ls`→ Listando volumes
 - `docker volume inspect {nome-volume}`→ Verificar o que tem no volume
+- `docker volume rm {nome-volume}`→ Apagar volume
 - `docker cp {imagem}:{diretorio-container} {diretorio-local}`→ Copiar do container para o host local
 - `docker cp {diretorio-local} {imagem}:{diretorio-container}`→ Copiar do host local para o container
 - `docker system prune`→ Remove todos os containers imagens parados
