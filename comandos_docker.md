@@ -35,6 +35,12 @@
 - `docker volume inspect {nome-volume}`→ Verificar o que tem no volume
 - `docker cp {imagem}:{diretorio-container} {diretorio-local}`→ Copiar do container para o host local
 - `docker cp {diretorio-local} {imagem}:{diretorio-container}`→ Copiar do host local para o container
+- `docker system prune`→ Remove todos os containers imagens parados
+- `docker top {nome-container}`→ Mostra informações sobre o processamento do container
+- `docker inspect {nome-container}`→ Mostra mais informações sobre o container
+- `docker stats` → Mostra mais informações sobre os containers e gastos de recursos computacioinais
+- `docker push` → Envia imagens para o hub
+- `docker pull` → Baixa as images do hub
 ---
 
 ## 🏗️ Subindo as imagens para o docker hub
