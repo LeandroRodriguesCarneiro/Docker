@@ -46,6 +46,12 @@
 - `docker stats` → Mostra mais informações sobre os containers e gastos de recursos computacioinais
 - `docker push` → Envia imagens para o hub
 - `docker pull` → Baixa as images do hub
+- `docker network create {nome-network}` → Cria uma rede padrão do tipo bridge
+- `docker network create -d {nome-driver} {nome-network}` → Cria uma rede padrão do tipo bridge
+- `docker network ls` → Lista as redes disponíveis
+- `docker network rm {nome-network}` → Apaga a rede
+- `docker network prune` → Apaga todas as rede
+- 
 
 ---
 
