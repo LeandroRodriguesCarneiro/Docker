@@ -58,6 +58,7 @@
 - `docker network connect {nome-network} {id-container}` → Conecta um container a uma network
 - `docker network disconnect {nome-network} {id-container}` → Conecta um container a uma network
 - `docker network inspect {nome-network}` → Inspecioina uma rede
+- `docker info` → Informações do docker
 
 ---
 
