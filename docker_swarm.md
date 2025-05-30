@@ -14,3 +14,8 @@
 - `docker stack depoloy -c {arquivo.yml} {nome-servico}`  Para inspecionar o serviço
 - `docker service scale {nome-servico}={n-replicas}` Extender o servico
 - `docker node update --availability drain {id-node}` Node não recebe mais tasks
+- `docker node update --availability active {id-node}` Node não recebe mais tasks
+- `docker service update --image {imagem} {servico}` para atualizar a imagem
+- `doker network create --drive overlay swarm` criando redes
+- `docker service create --name {name} --replicas {n-replicas} -p {porta-swarm}:{porta-host} --network swarm {imagem}` criando servico conectado a uma rede
+- `docker service update --network-ad swarm {id-servico}` criando servico conectado a uma rede
